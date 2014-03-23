@@ -10,9 +10,13 @@ class Producers extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		//
+	public function up() {
+		Schema::create('producers', function(Blueprint $table) {
+			$table->increments('id');
+			$table->String('name');
+			$table->String('quote');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -20,9 +24,7 @@ class Producers extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		//
+	public function down() {
+		Schema::drop('producers');
 	}
-
 }

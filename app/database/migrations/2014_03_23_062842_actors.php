@@ -10,9 +10,14 @@ class Actors extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		//
+	public function up() {
+		Schema::create('actors', function(Blueprint $table) {
+			$table->increments('id');
+			$table->String('fname');
+			$table->String('lname');
+			$table->timestamps();
+
+		});
 	}
 
 	/**
@@ -20,9 +25,8 @@ class Actors extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		//
+	public function down() {
+		Schema::drop('actors');
 	}
 
 }
