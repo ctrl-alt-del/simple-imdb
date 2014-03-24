@@ -7,9 +7,10 @@ class ActorsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
+	public function index() {
+		$actors = Actor::all();
+		return Response::json($actors);
+		// return "Hello World";
 	}
 
 	/**
