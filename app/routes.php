@@ -11,7 +11,46 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+/**
+* Put all the routes into a group 'api/v1'
+*
+* @since 2014-03-24
+* @version 1.0
+**/
+Route::group(
+	array(
+		'prefix' 	=> 'api/v1',
+		'before' 	=> '', // filter used before calling routes
+		'after' 	=> '', // filter used after calling routes
+		),
+
+	function() {
+
+		Route::get('/', function()
+		{
+			return 'Welcome to API Version 01';
+		});
+
+
+		/**
+		* Routes to access the actor
+		**/
+		Route::resource('actors', 'ActorsController');
+
+		/**
+		* Routes to access the actor
+		**/
+		Route::resource('producers', 'ProducersController');
+	});
+
+/**
+* Redirect all the routes to 'api/v1'
+*
+* @since 2014-03-05
+* @version 1.0
+**/
+Route::any('{all}', function($path) {
+	if (!preg_match("/\bapi\/v1\b/i", $path)) {
+		return Redirect::intended('api/v1/'.$path);
+	}
+})->where('all', '.*');
