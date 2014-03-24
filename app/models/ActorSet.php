@@ -25,7 +25,7 @@ class ActorSet extends Eloquent {
         return $this->belongsTo('Content');
     }
 
-    public function actor() {
-        return $this->belongsTo('Actor');
+    public function actors() {
+        return $this->hasMany('Actor');
     }
 }

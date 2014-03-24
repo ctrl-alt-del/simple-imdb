@@ -25,7 +25,7 @@ class ActorSet extends Eloquent {
         return $this->belongsTo('Content');
     }
 
-    public function producer() {
-        return $this->belongsTo('Producer');
+    public function producers() {
+        return $this->hasMany('Producers');
     }
 }
