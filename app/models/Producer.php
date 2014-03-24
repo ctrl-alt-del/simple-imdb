@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Actor extends Eloquent {
+class Producer extends Eloquent {
 
 	/**
 	 * The database table used by the model.

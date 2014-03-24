@@ -1,6 +1,6 @@
 <?php
 
-class ActorSet extends Eloquent {
+class ProducerSet extends Eloquent {
 
 	/**
 	 * The database table used by the model.
