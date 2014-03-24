@@ -7,9 +7,9 @@ class ProducersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
+	public function index() {
+		$producers = Producer::all();
+		return Response::json($producers);
 	}
 
 	/**

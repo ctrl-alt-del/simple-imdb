@@ -7,9 +7,9 @@ class ContentsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
+	public function index() {
+		$contents = Content::all();
+		return Response::json($contents);
 	}
 
 	/**
