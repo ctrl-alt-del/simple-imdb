@@ -13,7 +13,7 @@ class Producers extends Migration {
 	public function up() {
 		Schema::create('producers', function(Blueprint $table) {
 			$table->increments('id');
-			$table->String('name');
+			$table->String('name')->nullable();
 			$table->String('quote');
 			$table->timestamps();
 		});

@@ -16,7 +16,6 @@ class Actors extends Migration {
 			$table->String('fname');
 			$table->String('lname');
 			$table->timestamps();
-
 		});
 	}
 
