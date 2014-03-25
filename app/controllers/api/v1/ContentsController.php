@@ -13,23 +13,45 @@ class ContentsController extends \BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store() {
+
+		$data = array(
+			'sku' => Input::get('sku'),
+			);
+
+		$rules = array('sku' => 'unique:contents,sku');
+
+		$validator = Validator::make($data, $rules);
+
+		if ($validator->fails()) {
+			return Response::json(
+				array(
+					'code' 		=> '400',
+					'message' 	=> 'Oops, product is already on database.',
+					'data' 		=> '',
+					));
+		} else {
+
+			$info = explode("-", Input::get('sku'));
+			$episode = $info[1];
+
+			$product = new Product;
+			$product->sku = Input::get('sku');
+			$product->episode = $episode;
+
+			$product->save();
+
+			return Response::json(
+				array(
+					'code' 		=> '200',
+					'message' 	=> 'Product is registered, thank you!',
+					'data' 		=> '',
+					));
+		}
 	}
 
 	/**
@@ -38,20 +60,9 @@ class ContentsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
+	public function show($id) {
+		$content = Content::findOrFail($id);
+		return Response::json($content);
 	}
 
 	/**
