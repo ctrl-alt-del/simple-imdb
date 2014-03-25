@@ -31,14 +31,28 @@ Route::group(
 			return 'Welcome to API Version 01';
 		});
 
-
 		/**
-		* Routes to access the actor
+		* Routes to access the actors
 		**/
 		Route::resource('actors', 'ActorsController');
 
 		/**
-		* Routes to access the actor
+		* Routes to access the firms
+		**/
+		Route::resource('firms', 'FirmsController');
+
+		/**
+		* Routes to access the contents
+		**/
+		Route::resource('contents', 'ContentsController');
+
+		/**
+		* Routes to access the performers
+		**/
+		Route::resource('performers', 'PerformersController');
+
+		/**
+		* Routes to access the producers
 		**/
 		Route::resource('producers', 'ProducersController');
 	});
