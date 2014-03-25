@@ -2,6 +2,7 @@
 
 class Actor extends Eloquent {
 
+	protected $guarded = array('id');
 	/**
 	 * The database table used by the model.
 	 *
@@ -22,7 +23,4 @@ class Actor extends Eloquent {
         return URL::to('api/v1/actors/' . $this->id);
     }
 
-    public function contents() {
-		return $this->hasMany('Content');
-	}
 }
