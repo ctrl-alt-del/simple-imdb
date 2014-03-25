@@ -11,21 +11,21 @@ class ProducerTableSeeder extends Seeder {
 		DB::table('producers')->truncate();
 
 		
-		$companies = array(
-			'AAA Company' 	=> 'AAA',
-			'BBB Company' 	=> 'BBB',
-			'CCC Company' 	=> 'CCC',
-			'DDD Company' 	=> 'DDD',
-			'EEE Company' 	=> 'EEE',
+		$items = array(
+			'1' => '1',
+			'2' => '1',
+			'3' => '1',
+			'4' => '1',
+			'5' => '1',
 			);
 
 		$date = new DateTime;
 		$producers = array();
 
-		foreach ($companies as $name => $quote) {
+		foreach ($items as $firm_id => $content_id) {
 			$producer = array(
-				'name' 			=> $name,
-				'quote' 		=> $quote,
+				'content_id' 	=> $content_id,
+				'firm_id' 		=> $firm_id,
 				'created_at' 	=> $date, 
 				'updated_at' 	=> $date, 
 				);
