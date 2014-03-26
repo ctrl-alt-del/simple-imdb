@@ -2,21 +2,21 @@
 
 use Illuminate\Database\Schema\Blueprint;
 
-class PerformerTableSeeder extends Seeder {
+class ActorContentTableSeeder extends Seeder {
 
 	public function run() {
 		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         // Uncomment the below to wipe the table clean before populating
-		DB::table('performers')->truncate();
+		DB::table('actor_content')->truncate();
 
 		
 		$items = array(
-			'1' => '1',
-			'2' => '1',
+			'1' => '5',
+			'2' => '5',
 			'3' => '1',
-			'4' => '1',
-			'5' => '1',
+			'4' => '4',
+			'5' => '3',
 			);
 
 		$date = new DateTime;
@@ -32,7 +32,7 @@ class PerformerTableSeeder extends Seeder {
 			array_push($performers, $performer);
 		}
 
-		DB::table('performers')->insert($performers);
+		DB::table('actor_content')->insert($performers);
 		unset($performers);
 		$performers = array();
 
