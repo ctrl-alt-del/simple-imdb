@@ -75,12 +75,12 @@ class ContentsController extends \BaseController {
 
 		$content = Content::findOrFail($id);
 
-		$content->name = Input::get('name') ?: $content->name,
-		$content->series = Input::get('series') ?: $content->series,
-		$content->episode = Input::get('episode') ?: $content->episode,
-		$content->sku = Input::get('sku') ?: $content->sku,
-		$content->audited = Input::get('audited') ?: $content->audited,
-		$content->available = Input::get('available') ?: $content->available,
+		$content->name = Input::get('name') ?: $content->name;
+		$content->series = Input::get('series') ?: $content->series;
+		$content->episode = Input::get('episode') ?: $content->episode;
+		$content->sku = Input::get('sku') ?: $content->sku;
+		$content->audited = Input::get('audited') ?: $content->audited;
+		$content->available = Input::get('available') ?: $content->available;
 		$actcontentor->save();
 
 		return Response::json(
@@ -90,7 +90,7 @@ class ContentsController extends \BaseController {
 				'data' 		=> '',
 				));
 	}
-}
+
 
 	/**
 	 * Remove the specified resource from storage.
