@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Performers extends Migration {
+class ActorContent extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,7 +11,7 @@ class Performers extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('performers', function(Blueprint $table) {
+		Schema::create('actor_content', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('content_id')->unsigned();
 			$table->integer('actor_id')->unsigned();
@@ -28,7 +28,7 @@ class Performers extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop('performers');
+		Schema::drop('actor_content');
 	}
 
 }
