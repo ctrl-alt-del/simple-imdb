@@ -1,6 +1,6 @@
 <?php
 
-class Producerset extends Eloquent {
+class ActorContent extends Eloquent {
 
 	protected $guarded = array('id');
 	/**
@@ -8,7 +8,7 @@ class Producerset extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'producersets';
+	protected $table = 'actor_content';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -19,14 +19,15 @@ class Producerset extends Eloquent {
 	protected $appends = array('location');
 
 	public function getLocationAttribute() {
-		return URL::to('api/v1/producersets/' . $this->id);
+		return URL::to('api/v1/actor_content/' . $this->id);
 	}
 
-    public function content() {
-        return $this->belongsTo('Content');
-    }
-
-    public function producer() {
-        return $this->belongsTo('Producer');
-    }
+	// public function actor() {
+	// 	return $this->belongsTo('Actor');
+	// }
+	
+	// public function content() {
+	// 	return $this->belongsTo('Content');
+	// }
+	
 }
