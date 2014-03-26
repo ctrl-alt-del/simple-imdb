@@ -71,10 +71,26 @@ class ContentsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update($id) {
+
+		$content = Content::findOrFail($id);
+
+		$content->name = Input::get('name') ?: $content->name,
+		$content->series = Input::get('series') ?: $content->series,
+		$content->episode = Input::get('episode') ?: $content->episode,
+		$content->sku = Input::get('sku') ?: $content->sku,
+		$content->audited = Input::get('audited') ?: $content->audited,
+		$content->available = Input::get('available') ?: $content->available,
+		$actcontentor->save();
+
+		return Response::json(
+			array(
+				'code' 		=> '200',
+				'message' 	=> 'content is updated, thank you!',
+				'data' 		=> '',
+				));
 	}
+}
 
 	/**
 	 * Remove the specified resource from storage.
