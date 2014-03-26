@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ActorTableSeeder');
 		$this->call('FirmTableSeeder');
 		$this->call('ContentTableSeeder');
-		$this->call('PerformerTableSeeder');
-		$this->call('ProducerTableSeeder');
+		$this->call('ActorContentTableSeeder');
+		$this->call('ContentFirmTableSeeder');
 	}
 
 }
