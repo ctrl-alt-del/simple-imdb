@@ -37,20 +37,20 @@ class ActorsController extends \BaseController {
 					'message' 	=> 'Oops, cannot add actor to database.',
 					'data' 		=> '',
 					));
-			} else {
+		} else {
 
-				$actor = new Actor;
-				$actor->fname = Input::get('fname');
-				$actor->lname = Input::get('lname');
-				$actor->save();
+			$actor = new Actor;
+			$actor->fname = Input::get('fname');
+			$actor->lname = Input::get('lname');
+			$actor->save();
 
-				return Response::json(
-					array(
-						'code' 		=> '200',
-						'message' 	=> 'Actor is registered, thank you!',
-						'data' 		=> '',
-						));
-			}
+			return Response::json(
+				array(
+					'code' 		=> '200',
+					'message' 	=> 'Actor is registered, thank you!',
+					'data' 		=> '',
+					));
+		}
 	}
 
 	/**
@@ -70,9 +70,40 @@ class ActorsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update($id) {
+
+		$data = array(
+			'fname' => Input::get('fname'),
+			'lname' => Input::get('lname'),
+			);
+
+		$rules = array(
+			'fname' => 'required_if:lname,null',
+			'lname' => 'required_if:fname,null',
+			);
+
+		$validator = Validator::make($data, $rules);
+
+		if ($validator->fails()) {
+			return Response::json(
+				array(
+					'code' 		=> '400',
+					'message' 	=> 'Oops, no info is given to update.',
+					'data' 		=> '',
+					));
+		} else {
+			$actor = Actor::findOrFail($id);
+			$actor->fname = Input::get('fname');
+			$actor->lname = Input::get('lname');
+			$actor->save();
+
+			return Response::json(
+				array(
+					'code' 		=> '200',
+					'message' 	=> 'Actor is updated, thank you!',
+					'data' 		=> '',
+					));
+		}
 	}
 
 	/**
