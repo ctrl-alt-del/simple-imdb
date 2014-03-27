@@ -46,15 +46,6 @@ Route::group(
 		**/
 		Route::resource('contents', 'ContentsController');
 
-		/**
-		* Routes to access the performers
-		**/
-		Route::resource('performers', 'PerformersController');
-
-		/**
-		* Routes to access the producers
-		**/
-		Route::resource('producers', 'ProducersController');
 	});
 
 /**
