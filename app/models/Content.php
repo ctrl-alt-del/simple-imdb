@@ -16,34 +16,27 @@ class Content extends Eloquent {
 	 * @var array
 	 */
 	protected $hidden = array('created_at','updated_at');
-	protected $appends = array('location', 'number_of_performers', 'number_of_producers');
+	protected $appends = array('location');
 	
 
 	public function getLocationAttribute() {
 		return URL::to('api/v1/contents/' . $this->id);
 	}
 
-	public function includePerformers() {
-		$this->hidden = array_diff($this->hidden, array('performers'));
+	public function firms() {
+		return $this->belongsToMany('Firm');
 	}
 
-	public function performers() {
-		return $this->hasMany('Performer');
+	public function actors() {
+		return $this->belongsToMany('Actor');
 	}
 
-	public function getNumberOfPerformersAttribute() {
-		return count($this->performers);
+	public function getNumberOfFirmsAttribute() {
+		return count($this->firms);
 	}
 
-	public function includeProducers() {
-		$this->hidden = array_diff($this->hidden, array('producers'));
+	public function getNumberOfActorsAttribute() {
+		return count($this->actors);
 	}
 
-	public function producers() {
-		return $this->hasMany('Producer');
-	}
-
-	public function getNumberOfProducersAttribute() {
-		return count($this->producers);
-	}
 }

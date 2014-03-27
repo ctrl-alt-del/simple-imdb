@@ -16,11 +16,18 @@ class Firm extends Eloquent {
 	 * @var array
 	 */
 	protected $hidden = array('created_at','updated_at');
-	protected $appends = array('location');
+	protected $appends = array('location', 'number_of_contents');
 	
-    
-    public function getLocationAttribute() {
-        return URL::to('api/v1/firms/' . $this->id);
-    }
 
+	public function getLocationAttribute() {
+		return URL::to('api/v1/firms/' . $this->id);
+	}
+
+	public function contents() {
+		return $this->belongsToMany('Content');
+	}
+
+	public function getNumberOfContentsAttribute() {
+		return count($this->contents);
+	}
 }
