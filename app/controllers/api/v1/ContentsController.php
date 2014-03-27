@@ -31,24 +31,25 @@ class ContentsController extends \BaseController {
 			return Response::json(
 				array(
 					'code' 		=> '400',
-					'message' 	=> 'Oops, product is already on database.',
+					'message' 	=> 'Oops, content is already on database.',
 					'data' 		=> '',
 					));
 		} else {
+			
 
 			$info = explode("-", Input::get('sku'));
 			$episode = $info[1];
 
-			$product = new Product;
-			$product->sku = Input::get('sku');
-			$product->episode = $episode;
+			$content = new Content;
+			$content->sku = Input::get('sku');
+			$content->episode = $episode;
 
-			$product->save();
+			$content->save();
 
 			return Response::json(
 				array(
 					'code' 		=> '200',
-					'message' 	=> 'Product is registered, thank you!',
+					'message' 	=> 'Content is registered, thank you!',
 					'data' 		=> '',
 					));
 		}
