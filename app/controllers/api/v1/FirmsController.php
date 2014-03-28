@@ -17,9 +17,39 @@ class FirmsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store() {
+		$data = array(
+			'name' => Input::get('name'),
+			'quote' => Input::get('quote'),
+			);
+
+		$rules = array(
+			'quote' => 'required',
+			);
+
+		$validator = Validator::make($data, $rules);
+
+		if ($validator->fails()) {
+			return Response::json(
+				array(
+					'code' 		=> '400',
+					'message' 	=> 'Oops, cannot add firm to database.',
+					'data' 		=> '',
+					));
+		} else {
+
+			$firm = new Firm;
+			$firm->name = Input::get('name');
+			$firm->quote = Input::get('quote');
+			$firm->save();
+
+			return Response::json(
+				array(
+					'code' 		=> '200',
+					'message' 	=> 'Firm is registered, thank you!',
+					'data' 		=> '',
+					));
+		}
 	}
 
 	/**
