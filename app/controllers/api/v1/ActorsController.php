@@ -112,9 +112,15 @@ class ActorsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
+	public function destroy($id) {
+		$actor = Actor::findOrFail($id);
+		$actor->delete();
+
+		return Response::json(array(
+			'error' 	=> false,
+			'type' 		=> '200',
+			'message' 	=> 'actor has deleted',
+			));
 	}
 
 }

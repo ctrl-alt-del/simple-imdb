@@ -82,7 +82,7 @@ class ContentsController extends \BaseController {
 		$content->sku = Input::get('sku') ?: $content->sku;
 		$content->audited = Input::get('audited') ?: $content->audited;
 		$content->available = Input::get('available') ?: $content->available;
-		$actcontentor->save();
+		$content->save();
 
 		return Response::json(
 			array(
@@ -99,9 +99,15 @@ class ContentsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
+	public function destroy($id) {
+		$content = Actor::findOrFail($id);
+		$content->delete();
+
+		return Response::json(array(
+			'error' 	=> false,
+			'type' 		=> '200',
+			'message' 	=> 'content has deleted',
+			));
 	}
 
 }
