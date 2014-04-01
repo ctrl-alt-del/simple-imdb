@@ -21,13 +21,4 @@ class ActorContent extends Eloquent {
 	public function getLocationAttribute() {
 		return URL::to('api/v1/actor_content/' . $this->id);
 	}
-
-	// public function actor() {
-	// 	return $this->belongsTo('Actor');
-	// }
-	
-	// public function content() {
-	// 	return $this->belongsTo('Content');
-	// }
-	
 }
