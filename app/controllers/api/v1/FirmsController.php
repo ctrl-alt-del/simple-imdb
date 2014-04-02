@@ -71,7 +71,18 @@ class FirmsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$firm = Firm::findOrFail($id);
+
+		$firm->name = Input::get('name') ?: $firm->name;
+		$firm->quote = Input::get('quote') ?: $firm->quote;
+		$firm->save();
+
+		return Response::json(
+			array(
+				'code' 		=> '200',
+				'message' 	=> 'firm is updated, thank you!',
+				'data' 		=> '',
+				));
 	}
 
 	/**
@@ -80,9 +91,15 @@ class FirmsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
+	public function destroy($id) {
+		$content = Actor::findOrFail($id);
+		$content->delete();
+
+		return Response::json(array(
+			'error' 	=> false,
+			'type' 		=> '200',
+			'message' 	=> 'content has deleted',
+			));
 	}
 
 }
