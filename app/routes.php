@@ -28,7 +28,12 @@ Route::group(
 
 		Route::get('/', function()
 		{
-			return 'Welcome to API Version 01';
+			return Response::json(
+				array(
+					'code' 		=> '200',
+					'message' 	=> 'Welcome to API Version 01',
+					'data' 		=> '',
+					));
 		});
 
 		/**
