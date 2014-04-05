@@ -67,6 +67,17 @@ class ContentsController extends \BaseController {
 	}
 
 	/**
+	 * Display the specified resource by sku.
+	 *
+	 * @param  int  $sku
+	 * @return Response
+	 */
+	public function showBySku($sku) {
+		$content = Content::where('sku','=',$sku)->first();
+		return Response::json($content);
+	}
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id

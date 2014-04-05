@@ -50,6 +50,7 @@ Route::group(
 		* Routes to access the contents
 		**/
 		Route::resource('contents', 'ContentsController');
+		Route::get('contents/sku/{sku}', 'ContentController@showBySku');
 
 	});
 
