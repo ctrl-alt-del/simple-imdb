@@ -15,10 +15,11 @@ class Contents extends Migration {
 			$table->increments('id');
 			$table->String('name')->nullable();
 			$table->integer('series')->nullable();
-			$table->integer('episode');
+			$table->integer('episode')->nullable();
 			$table->String('sku');
-			$table->boolean('audited');
-			$table->boolean('available');
+			$table->String('description');
+			$table->boolean('audited')->default(false);
+			$table->boolean('available')->default(false);
 
 			$table->timestamps();
 
